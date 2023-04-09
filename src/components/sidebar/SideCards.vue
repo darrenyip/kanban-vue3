@@ -1,8 +1,13 @@
 <script setup>
 import SideSingleCard from "./SideSingleCard.vue";
 import { useKanBanStore } from "../../stores/kanbans";
+import { useRouter, useRoute } from "vue-router";
 const kanbanStore = useKanBanStore();
-// console.log(kanbanStore.kanbans);
+
+const router = useRouter();
+const jumpToKanban = (id) => {
+  router.push(`/kanban/${id}`);
+};
 </script>
 
 <template>
@@ -11,6 +16,7 @@ const kanbanStore = useKanBanStore();
       v-for="kb in kanbanStore.kanbans"
       :title="kb.title"
       key="kb.id"
+      @click="jumpToKanban(kb.id)"
     ></side-single-card>
   </div>
 </template>

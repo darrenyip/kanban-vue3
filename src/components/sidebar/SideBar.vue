@@ -2,11 +2,13 @@
 import SideCards from "./SideCards.vue";
 import { useKanBanStore } from "../../stores/kanbans";
 const kanban = useKanBanStore();
+
+const addNewKanban = () => {
+  console.log("add new Kanban");
+};
 </script>
 <template>
-  <div
-    class="sidebar h-full w-[20vw] flex flex-col border-r-4 border-emerald-400"
-  >
+  <div class="sidebar w-[250px] flex flex-col border-r-4 border-emerald-400">
     <div class="logo flex w-full p-6">
       <div class="logo-square"></div>
       <div class="logo-text">Kanban</div>
@@ -14,6 +16,7 @@ const kanban = useKanBanStore();
     <div class="px-4">总看板 ({{ kanban.getKanbanTotal }})</div>
     <div class="px-4 py-2 h-full">
       <side-cards></side-cards>
+      <div class="" @click="addNewKanban">添加看板</div>
     </div>
   </div>
 </template>

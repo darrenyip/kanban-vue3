@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 const initialKanbans = [
   {
@@ -10,8 +10,22 @@ const initialKanbans = [
         id: "todo1",
         date: "",
       },
+      {
+        title: "音响设备",
+        id: "todo2",
+        date: "",
+      },
     ],
-    done: [],
+    done: [
+      {
+        title: "邀约人群",
+        id: "done1",
+      },
+      {
+        title: "门票打印",
+        id: "done2",
+      },
+    ],
     inProgress: [],
   },
   { id: "002", title: "iKidey 研发", todo: [], done: [], inProgress: [] },
@@ -19,7 +33,6 @@ const initialKanbans = [
 
 export const useKanBanStore = defineStore("kanban", () => {
   const kanbans = ref(initialKanbans);
-  const getKanbanTotal = computed(() => kanbans.value.length);
 
   function getKanbanById(id) {
     return kanbans.value.find((kb) => id === kb.id);
@@ -35,10 +48,10 @@ export const useKanBanStore = defineStore("kanban", () => {
       kanban.splice(index);
     }
   }
+
   return {
     kanbans,
     getKanbanById,
-    getKanbanTotal,
     addKanban,
     removeKanban,
   };

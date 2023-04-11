@@ -4,21 +4,21 @@
     <h1 class="mb-3">{{ kb.title }}</h1>
     <!-- board -->
     <div class="flex justify-space">
-      <draggable v-model="list1" group="people" @change="log" itemKey="name">
+      <draggable v-model="kb.todo" group="people" @change="log" itemKey="name">
         <template #item="{ element }">
-          <div>{{ element.name }}</div>
+          <div>{{ element.title }}</div>
         </template>
       </draggable>
-      <draggable v-model="list2" group="people" @change="log" itemKey="name">
+      <draggable v-model="kb.done" group="people" @change="log" itemKey="name">
         <template #item="{ element }">
-          <div>{{ element.name }}</div>
+          <div>{{ element.title }}</div>
         </template>
       </draggable>
     </div>
   </div>
 </template>
 <script setup>
-import { ref, watch, reactive } from "vue";
+import { watch, reactive } from "vue";
 import { useKanBanStore } from "@/stores/kanbans";
 import { useRoute } from "vue-router";
 import draggable from "vuedraggable";
@@ -31,18 +31,7 @@ watch(
   () => route.params,
   async (newId, oldId) => {
     kb = store.getKanbanById(route.params.id);
+    console.log("route id changed", kb);
   }
 );
-
-let list1 = ref([
-  { name: "John", id: 1 },
-  { name: "Joao", id: 2 },
-  { name: "Jean", id: 3 },
-  { name: "Gerard", id: 4 },
-]);
-let list2 = ref([
-  { name: "Juan", id: 5 },
-  { name: "Edgard", id: 6 },
-  { name: "Johnson", id: 7 },
-]);
 </script>

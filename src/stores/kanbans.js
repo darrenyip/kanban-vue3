@@ -4,29 +4,31 @@ const initialKanbans = [
   {
     id: "001",
     title: "iKidey 发布会",
-    todo: [
-      {
-        title: "场地租赁",
-        id: "todo1",
-        date: "",
-      },
-      {
-        title: "音响设备",
-        id: "todo2",
-        date: "",
-      },
-    ],
-    done: [
-      {
-        title: "邀约人群",
-        id: "done1",
-      },
-      {
-        title: "门票打印",
-        id: "done2",
-      },
-    ],
-    inProgress: [],
+    content: {
+      todo: [
+        {
+          title: "场地租赁",
+          id: "todo1",
+          date: "",
+        },
+        {
+          title: "音响设备",
+          id: "todo2",
+          date: "",
+        },
+      ],
+      done: [
+        {
+          title: "邀约人群",
+          id: "done1",
+        },
+        {
+          title: "门票打印",
+          id: "done2",
+        },
+      ],
+      inProgress: [],
+    },
   },
   { id: "002", title: "iKidey 研发", todo: [], done: [], inProgress: [] },
 ];
